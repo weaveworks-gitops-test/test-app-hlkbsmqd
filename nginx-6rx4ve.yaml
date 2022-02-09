@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: my-nginx-6rx4ve
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-6rx4ve
+  namespace: my-nginx-6rx4ve
+  labels:
+    name: nginx-6rx4ve
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: nginx-6rx4ve
+  template:
+    metadata:
+      namespace: my-nginx-6rx4ve
+      labels:
+        name: nginx-6rx4ve
+    spec:
+      containers:
+      - name: nginx-6rx4ve
+        image: nginx
+        ports:
+        - containerPort: 80
+
